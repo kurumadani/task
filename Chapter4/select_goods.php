@@ -1,3 +1,4 @@
+<!-- 4-6 PHPでレコードを更新する -->
 <?php
 $USER='root';
 $PW='yoshi01';
