@@ -1,13 +1,13 @@
-<!-- 5-1　動的にレコードを追加しよう① -->
-<!-- フォーム要素を配置したhtmlを書いてみる -->
+<!-- 5-2 動的にレコードを追加しよう② -->
+<!-- 最初から全レコードを表示してみよう -->
 <?php
-$res='';
+$res = '';
+$USER='root';
+$PW='yoshi01';
+$dnsinfo="mysql:dbname=salesmanagement;host=localhost;charset=utf8";
+$pdo = new PDO($dnsinfo,$USER,$PW);
 if(isset($_POST['insert'])){
-	$USER='root';
-	$PW='yoshi01';
-	$dnsinfo="mysql:dbname=salesmanagement;host=localhost;charset=utf8";
 	try{
-		$pdo = new PDO($dnsinfo,$USER,$PW);
 		$sql = "INSERT INTO goods VALUES(?,?,?)";
 		$stmt = $pdo->prepare($sql);
 		$array = array($_POST['GoodsID'],$_POST['GoodsName'],$_POST['Price']);
@@ -16,6 +16,15 @@ if(isset($_POST['insert'])){
 		$res = $e->getMessage();
 	}
 }
+$sql = "SELECT * FROM goods";
+$stmt = $pdo->prepare($sql);
+$stmt->execute(null);
+$res = "<table>\n";
+while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+	$res .= "<tr><td>".$row['GoodsID']."</td><td>".$row['GoodsName']
+			."</td><td>".$row['Price']."</td></tr>\n";
+}
+$res .= "</table>\n";
 ?>
 <!DOCTYPE html>
 <html>

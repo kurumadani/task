@@ -1,7 +1,7 @@
-<!-- 5-1　動的にレコードを追加しよう① -->
-<!-- フォーム要素を配置したhtmlを書いてみる -->
+<!-- 5-2 動的にレコードを追加しよう② -->
+<!-- 登録されたレコードを表示してみよう -->
 <?php
-$res='';
+$res = '';
 if(isset($_POST['insert'])){
 	$USER='root';
 	$PW='yoshi01';
@@ -12,6 +12,17 @@ if(isset($_POST['insert'])){
 		$stmt = $pdo->prepare($sql);
 		$array = array($_POST['GoodsID'],$_POST['GoodsName'],$_POST['Price']);
 		$res = $stmt->execute($array);
+		if($res){
+			$sql = "SELECT * FROM goods";
+			$stmt = $pdo->prepare($sql);
+			$stmt->execute(null);
+			$res = "<table>\n";
+			while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+				$res .= "<tr><td>".$row['GoodsID']."</td><td>".$row['GoodsName']
+						."</td><td>".$row['Price']."</td></tr>\n";
+			}
+			$res .= "</table>\n";
+		}
 	}catch(Exception $e){
 		$res = $e->getMessage();
 	}
