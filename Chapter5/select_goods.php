@@ -1,5 +1,27 @@
 <!-- 5-3 動的にレコードを選択してみよう -->
-<!-- 最初にhtmlをかいてみよう -->
+<!-- PHPのコードを追加しよう-->
+<?php
+$res = '';
+if(isset($_POST['select'])){
+	$USER = 'root';
+	$PW = 'yoshi01';
+	$dnsinfo = "mysql:dbname=salesmanagement;host=localhost;charset=utf8";
+	try{
+		$pdo = new PDO($dnsinfo,$USER,$PW);
+		$sql = "SELECT * FROM goods WHERE GoodsID=?";
+		$stmt = $pdo->prepare($sql);
+		$array = array($_POST['GoodsID']);
+		$stmt->execute($array);
+		$res = "<table>\n";
+		while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+			$res .= "<tr><td>".$row['GoodsID']."</td><td>".$row['GoodsName']."</td></tr>\n";
+		}
+		$res .= "</table>\n";
+	}catch(Exception $e){
+		$res = $e->getMessage();
+	}
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,8 +32,9 @@
 <body>
 <h1>商品マスタの選択</h1>
 <form action="" method="post">
-<label>GoodID<input type= "text" name="GoodID" size="20" required></label>
+<label>GoodsID<input type= "text" name="GoodsID" size="20" required></label>
 <input type="submit" name="select" value="　表示　">
 </form>
+<?php echo $res; ?>
 </body>
 </html>
