@@ -1,5 +1,5 @@
 <!-- 5-3 動的にレコードを選択してみよう -->
-<!-- リストから選択できるようにしよう -->
+<!-- リストの設定をひと工夫しよう -->
 <?php
 $res = '';
 $USER = 'root';
@@ -11,6 +11,7 @@ $sql = "SELECT GoodsID, GoodsName FROM goods";
 $stmt = $pdo->prepare($sql);
 $stmt->execute(null);
 $selectTag = "<select name='GoodsID'>\n";
+	$selectTag .= "<option value=''>選択してください</option>\n";
 while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 	$selectTag .= "<option value=".$row['GoodsID'].">"
 				  .$row['GoodsName']."</option>\n";
