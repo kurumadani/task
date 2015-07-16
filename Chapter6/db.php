@@ -20,7 +20,7 @@ class DB{
 	public function executeSQL($sql,$array){
 		// SQLを実行する関数
 		try{
-			if(!$pdo = $this->connectdb()){
+			if(!$pdo = $this->Connectdb()){
 				return false;
 			}
 			// $pdo = $this->connectdb();
