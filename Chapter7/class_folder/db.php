@@ -4,7 +4,7 @@ class DB{
 	// MySQLとやり取りをするクラス
 	private $USER = 'root';
 	private $PW = 'yoshi01';
-	private $dns = "mysql:dbname=salesmanagement;host=localhost:charset=utf8";
+	private $dns = "mysql:dbname=salesmanagement;host=localhost;charset=utf8";
 
 	private function Connectdb(){
 		// PDOのインスタンスを生成する（接続を担当する）関数
@@ -24,7 +24,7 @@ class DB{
 			}
 
 			$stmt = $pdo->prepare($sql);
-			$stmt->execute($aaray);
+			$stmt->execute($array);
 			return $stmt;
 		}catch(Exception $e){
 			return false;

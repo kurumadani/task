@@ -6,12 +6,12 @@ class DBGoods extends DB{
 	public function SelectGoodsAll(){
 		$sql = "SELECT * FROM goods";
 		$res = parent::executeSQL($sql,null);
-		$data = "<table class='recordlist' id='goodsTable'>\n";
-		$date .= "<tr><th>ID</th><th>商品名</th><th>単価</th><th></th><th></th></tr>\n";
+		$data = "<table class='recordlist' id='goodsTable'>";
+		$data .= "<tr><th>ID</th><th>商品名</th><th>単価</th><th></th><th></th></tr>\n";
 		foreach($rows = $res->fetchAll(PDO::FETCH_NUM) as $row){
-			$date .= "<tr>\n";
+			$data .= "<tr>";
 			for($i=0; $i<count($row); $i++){
-				$date .= "<td>{$row[$i]}</td>";
+				$data .= "<td>{$row[$i]}</td>";
 			}
 			// 更新ボタンのコード
 			$data .= <<<eof
