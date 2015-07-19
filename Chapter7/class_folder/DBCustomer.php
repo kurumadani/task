@@ -45,7 +45,7 @@ class DBCustomer extends DB{
 
 	public function InsertCustomer(){
 		$sql="INSERT INTO customer VALUES(?,?,?,?)";
-		$array = array($_POST['CustomerID'],$_POST['CustomarName'],$_POST['TEL'],$_POST['Email']);
+		$array = array($_POST['CustomerID'],$_POST['CustomerName'],$_POST['TEL'],$_POST['Email']);
 		parent::executeSQL($sql,$array);
 	}
 

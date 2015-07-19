@@ -23,7 +23,7 @@ eof;
 			// 削除ボタンのコード
 			$data .= <<<eof
 			<td><form method='post' action=''>
-			<input type='hidden' name='id' id='Deleteid' value='{$row[0]}'>
+			<input type='hidden name='id' id='Deleteid' value='{$row[0]}'>
 			<input type='submit' name='delete' id='delete' value=' 削除 '
 			 onClick='return CheckDelete()'>
 			</form></td>
@@ -62,7 +62,7 @@ eof;
 
 	private function FieldValueForUpdate($GoodsID, $field){
 		//private関数　上の２つの関数で使用してる
-		$sql = "SELECT {$fild} FROM goods WHERE GoodsID=?";
+		$sql = "SELECT {$field} FROM goods WHERE GoodsID=?";
 		$array = array($GoodsID);
 		$res = parent::executeSQL($sql,$array);
 		$rows = $res->fetch(PDO::FETCH_NUM);
