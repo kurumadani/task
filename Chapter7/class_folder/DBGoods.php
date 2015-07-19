@@ -23,7 +23,7 @@ eof;
 			// 削除ボタンのコード
 			$data .= <<<eof
 			<td><form method='post' action=''>
-			<input type='hidden name='id' id='Deleteid' value='{$row[0]}'>
+			<input type='hidden' name='id' id='Deleteid' value='{$row[0]}'>
 			<input type='submit' name='delete' id='delete' value=' 削除 '
 			 onClick='return CheckDelete()'>
 			</form></td>
