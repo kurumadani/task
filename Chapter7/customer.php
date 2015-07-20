@@ -69,7 +69,7 @@ $data = $dbCustomer->SelectCustomerAll();
 <h2>更新</h2>
 <p>CustomerID: <?php echo $dbCustomerID; ?></p>
 <input type="hidden" name="CustomerID" value="<?php echo $dbCustomerID; ?>" />
-<label><span class="entrylabel">顧客名</span><input type="text" name="CustomerName" size="30" value="<?php echo $dbCustomername;?>" required></label>
+<label><span class="entrylabel">顧客名</span><input type="text" name="CustomerName" size="30" value="<?php echo $dbCustomerName;?>" required></label>
 <label><span class="entrylabel">TEL</span><input type="text" name="TEL" size="15" value="<?php echo $tel;?>" required></label>
 <label><span class="entrylabel">Email</span><input type="text" name="Email" size="40" value="<?php echo $email;?>" required></label>
 <input type="submit" name="submitUpdate" value="  更新  ">

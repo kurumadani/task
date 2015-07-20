@@ -13,7 +13,7 @@ if(isset($_POST['update'])){
 	$dbGoodsName = $dbGoods->GoodsNameForUpdate($_POST['id']);
 	$Price = $dbGoods->PriceForUpdate($_POST['id']);
 	// クラスを記述することで表示/非表示を設定
-	$entryCSS = "class='hideArea'";
+	$entryCss = "class='hideArea'";
 	$updateCss = "";
 }else{
 	$entryCss = "";

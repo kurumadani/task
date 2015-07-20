@@ -31,7 +31,7 @@ class DBCustomer extends DB{
 		$sql = "SELECT {$field} FROM customer WHERE CustomerID=?";
 		$array = array($CustomerID);
 		$res = parent::executeSQL($sql, $array);
-		$row = $res->fatch(FETCH_NUM);
+		$rows = $res->fetch(PDO::FETCH_NUM);
 		return $rows[0];
 	}
 
@@ -64,7 +64,7 @@ class DBCustomer extends DB{
 			$data .= <<<eof
 			<td><form method='post' action=''>
 			<input type='hidden' name='id' value='{$row[0]}'>
-			<input type='submit' name='updata' value=' 更新 '>
+			<input type='submit' name='update' value=' 更新 '>
 			</form></td>
 eof;
 			//削除ボタンのコード
