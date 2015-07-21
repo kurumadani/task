@@ -9,15 +9,15 @@ $detail = "";
 $total = "";
 $dbBill = new DBBill();
 if(isset($_POST['submit'])){
-  $startDate = $_POST['startDate'];
-  $endDate = $_POST['endDate'];
-  $TagCustomer = $dbBill->SelectTagOfCustomers($startDate, $endDate);
-  if(isset($_POST['CustomerID'])){
-    $customerName = $dbBill->getCustomerName($_POST['CustomerID']);
-    $total = $dbBill->TotalAmount($startDate, $endDate, $_POST['CustomerID']);
-    $total =($total==null)?"" :"合計金額：" .number_format($total) ."円";
-    $detail = $dbBill->SelectSalesinfo($startDate, $endDate, $_POST['CustomerID']);
-  }
+ 	$startDate = $_POST['startDate'];
+  	$endDate = $_POST['endDate'];
+  	$TagCustomer = $dbBill->SelectTagOfCustomers($startDate, $endDate);
+  	if(isset($_POST['CustomerID'])){
+    	$customerName = $dbBill->getCustomerName($_POST['CustomerID']);
+   		$total = $dbBill->TotalAmount($startDate, $endDate, $_POST['CustomerID']);
+    	$total =($total==null)?"" :"合計金額：" .number_format($total) ."円";
+    	$detail = $dbBill->SelectSalesinfo($startDate, $endDate, $_POST['CustomerID']);
+  	}
 }
 ?>
 <!DOCTYPE html>
@@ -36,24 +36,24 @@ if(isset($_POST['submit'])){
 <li><a href="customer.php">顧客マスタ</a></li>
 <li><a href="goods.php">商品マスタ</a></li>
 </ul>
-</div>
+</div><!-- menu -->
 <h1>請求情報</h1>
 <div id="search">
 <form method="post" action="">
 <label>請求期間<input type="date" id="startDate" name="startDate"
- value="<?php echo $startDate;?>" required></label>
+ 				value="<?php echo $startDate;?>" required></label>
 <label>～<input type="date" id="endDate" name="endDate"
- value="<?php echo $endDate;?>" required></label>
+ 			value="<?php echo $endDate;?>" required></label>
 <?php echo $TagCustomer;?>
 <input type="submit" value="　　検索　　" name="submit" />
 </form>
-</div>
+</div><!-- search -->
 <div id="detail">
 <p><?php echo $customerName;?></p>
 <div id="totalAmount">
 <?php echo $total;?>
-</div>
+</div><!-- totalAmount -->
 <?php echo $detail;?>
-</div>
+</div><!-- detail -->
 </body>
 </html>

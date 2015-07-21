@@ -71,7 +71,7 @@ eof;
 			$data .= <<<eof
 			<td><form method='post' action=''>
 			<input type='hidden' name='id' value='{$row[0]}'>
-			<input type='submit' name='delete' id='delete' value=' 削除 ' onClik='return CheckDelete()'>
+			<input type='submit' name='delete' id='delete' value=' 削除 ' onClick='return CheckDelete()'>
 			</form></td>
 eof;
 			$data .= "</tr>\n";

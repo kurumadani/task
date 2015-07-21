@@ -8,7 +8,7 @@ class DBBill extends DB{
 		SELECT distinct salesinfo.CustomerID,customer.CustomerName
 		FROM salesinfo INNER JOIN customer ON salesinfo.CustomerID=customer.CustomerID
 		WHERE salesinfo.SalesDate BETWEEN ? AND ?
-		ORDER BY salesinfo.CustomerID=customer
+		ORDER BY salesinfo.CustomerID
 eof;
 	$array = array($startDate, $endDate);
     $res = parent::executeSQL($sql, $array);
